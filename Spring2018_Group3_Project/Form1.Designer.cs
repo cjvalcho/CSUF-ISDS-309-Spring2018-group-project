@@ -32,10 +32,6 @@
 			this.btnFindAvail = new System.Windows.Forms.Button();
 			this.dtGrdVwAvailCars = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
-			this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clmMake = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clmModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clmRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dtGrdVwAvailCars)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -69,11 +65,6 @@
 			this.dtGrdVwAvailCars.AllowUserToAddRows = false;
 			this.dtGrdVwAvailCars.AllowUserToDeleteRows = false;
 			this.dtGrdVwAvailCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dtGrdVwAvailCars.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmID,
-            this.clmMake,
-            this.clmModel,
-            this.clmRate});
 			this.dtGrdVwAvailCars.Location = new System.Drawing.Point(15, 88);
 			this.dtGrdVwAvailCars.Name = "dtGrdVwAvailCars";
 			this.dtGrdVwAvailCars.ReadOnly = true;
@@ -90,30 +81,6 @@
 			this.label1.Size = new System.Drawing.Size(90, 17);
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Vehicle Type";
-			// 
-			// clmID
-			// 
-			this.clmID.HeaderText = "ID Code";
-			this.clmID.Name = "clmID";
-			this.clmID.ReadOnly = true;
-			// 
-			// clmMake
-			// 
-			this.clmMake.HeaderText = "Make";
-			this.clmMake.Name = "clmMake";
-			this.clmMake.ReadOnly = true;
-			// 
-			// clmModel
-			// 
-			this.clmModel.HeaderText = "Model";
-			this.clmModel.Name = "clmModel";
-			this.clmModel.ReadOnly = true;
-			// 
-			// clmRate
-			// 
-			this.clmRate.HeaderText = "Rate (Day)";
-			this.clmRate.Name = "clmRate";
-			this.clmRate.ReadOnly = true;
 			// 
 			// Form1
 			// 
@@ -138,10 +105,6 @@
 		private System.Windows.Forms.Button btnFindAvail;
 		private System.Windows.Forms.DataGridView dtGrdVwAvailCars;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clmID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clmMake;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clmModel;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clmRate;
 	}
 }
 

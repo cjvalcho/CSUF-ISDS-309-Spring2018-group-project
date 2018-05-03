@@ -39,17 +39,9 @@ namespace Spring2018_Group3_Project
 
 		private void btnFindAvail_Click(object sender, EventArgs e)
 		{
-
-			//dtGrdVwAvailCars.DataSource = null;
-			//dt.Clear();
-			//WriteRows();
-			//dt.Rows.Clear();
-			//ResetRows();
 			if (cmbBxCarTypes.SelectedItem != null)
 			{
-				//ReturnRows(cmbBxCarTypes.SelectedItem.ToString(), carData);
-				//MessageBox.Show("You selected " + cmbBxCarTypes.SelectedItem.ToString());
-				WriteRows();
+				PopulateRows(cmbBxCarTypes.SelectedItem.ToString(), carData);
 			}
 		}
 
@@ -69,26 +61,15 @@ namespace Spring2018_Group3_Project
 			dt.Rows.Add(103, "Toyota", "Tundra", 64.99);
 		}
 
-		private void ResetRows()
-		{
-			for (int i = dtGrdVwAvailCars.RowCount; i > 0; i--)
-			{
-				dt.Rows[i].Delete();
-			}
-		}
-
 		private void WriteRows()
 		{
-			ResetRows();
-			foreach (DataRow row in dt.Rows)
-			{
-				dtGrdVwAvailCars.Rows.Add(row[0], row[1], row[2], row[3]);
-			}
-			
+			dtGrdVwAvailCars.DataSource = dt;
+			dtGrdVwAvailCars.Refresh();
 		}
 
-		public void ReturnRows(string strSearch, CarDatabase carDat)
+		public void PopulateRows(string strSearch, CarDatabase carDat)
 		{
+			dt.Rows.Clear();
 			for (int i = 0; i < carDat.carList.Length; i++)
 			{
 				if (carDat.carList[i] == null)
@@ -100,6 +81,7 @@ namespace Spring2018_Group3_Project
 					dt.Rows.Add(carDat.carList[i].iID, carDat.carList[i].strMake, carDat.carList[i].strModel, carDat.carList[i].dblRate);
 				}
 			}
+			WriteRows();
 		}
 	}
 	public class Car
@@ -132,7 +114,6 @@ namespace Spring2018_Group3_Project
 			string strRecordIn;
 			string[] strFields;
 			CarDatabase carData = new CarDatabase();
-			Car carTemp = new Car();
 
 			// Open Read File Stream
 			FileStream inFile = new FileStream(strFileName, FileMode.Open, FileAccess.Read);
@@ -144,6 +125,7 @@ namespace Spring2018_Group3_Project
 			// Loop
 			while (strRecordIn != null)
 			{
+				Car carTemp = new Car();
 				strFields = strRecordIn.Split(DELIM);
 
 				carTemp.strCatagory = strFields[0];
