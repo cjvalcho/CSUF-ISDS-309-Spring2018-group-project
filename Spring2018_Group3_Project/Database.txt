@@ -1,0 +1,16 @@
+Sedan;Mitsubishi;Mirage;33.99
+Sedan;Nissan;Versa;34.99
+Sedan;Hyundai;Elantra;38.99
+Sedan;Toyata;Camry;41.99
+SUV;Ford;Eco Sport;51.99
+SUV;Toyota;RAV4;51.99
+SUV;Hyundai;Santa Fe;61.99
+SUV;Ford;Expedition;99.99
+Truck;Nissan;Frontier;61.99
+Truck;Ford;F150;61.99
+Truck;Toyota;Tacoma;58.99
+Truck;Honda;Ridgeline;64.99
+Van;Dodge;Grand Caravan;89.99
+Van;Chrysler;Pacifica;99.99
+Van;Kia;Sedona;89.99
+Van;Toyota;Sienna;94.99
