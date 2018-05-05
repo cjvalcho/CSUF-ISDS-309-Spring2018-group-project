@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Console;
+using static System.Array;
+using System.IO;
 
 namespace Spring2018_Group3_Project
 {
@@ -14,11 +17,12 @@ namespace Spring2018_Group3_Project
     {
         // Form 2 variables
         const double FEES = 4.99;
-        Form1.CarDatabase.Car carChoice = new Form1.CarDatabase.Car();
+        CarDatabase.Car carChoice = new CarDatabase.Car();
         Customer c1 = new Customer();
+        
         int iDays = 0;
 
-        public Form2(Form1.CarDatabase.Car car, int days)
+        public Form2(CarDatabase.Car car, int days)
         {
             InitializeComponent();
             carChoice = car;
@@ -61,3 +65,51 @@ namespace Spring2018_Group3_Project
         }
     }
 }
+
+// Writing to file example
+/*
+    // Variables    
+    const string FILENAME = "Test.txt";
+	const string DELIM = ",";
+    // File Information
+			if (File.Exists(FILENAME))
+			{
+				WriteLine("File exists");
+				WriteLine("File was created " + File.GetCreationTime(FILENAME));
+				WriteLine("File was last accessed " + File.GetLastAccessTime(FILENAME));
+				WriteLine("File was last written to " + File.GetLastWriteTime(FILENAME));
+			}
+			else
+			{
+				WriteLine("File does not exist");
+			}
+
+			// Open File Stream
+			FileStream outFile = new FileStream(FILENAME, FileMode.Append, FileAccess.Write);
+			StreamWriter writer = new StreamWriter(outFile);
+
+			// Process
+			Write("Enter Employee Number or " + END + " to quit >> ");
+			//Write("Enter Emploree Number of {0} to quit >> ", END);
+			emp.iEmpNum = Convert.ToInt32(ReadLine());
+
+			// Loop
+			while (emp.iEmpNum != END)
+			{
+				Write("Enter Last Name >> ");
+				emp.strName = ReadLine();
+				Write("Enter Salary >> $");
+				emp.dblSalary = Convert.ToDouble(ReadLine());
+
+				// Write to file
+				writer.WriteLine(emp.iEmpNum + DELIM + emp.strName + DELIM + emp.dblSalary);
+
+				// Process
+				Write("Enter Employee Number or " + END + " to quit >> ");
+				emp.iEmpNum = Convert.ToInt32(ReadLine());
+			}
+
+			// Close File Stream
+			writer.Close();
+			outFile.Close();
+*/
