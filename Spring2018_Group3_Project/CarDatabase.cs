@@ -41,39 +41,51 @@ namespace Spring2018_Group3_Project
             string strRecordIn;
             string[] strFields;
             CarDatabase carTempData = new CarDatabase();
+            FileStream inFile = null;
+            StreamReader reader = null;
 
-            // Opens the file and File Stream
-            FileStream inFile = new FileStream(strFilename, FileMode.Open, FileAccess.Read);
-            StreamReader reader = new StreamReader(inFile);
-
-            // Process
-            strRecordIn = reader.ReadLine();
-
-            // Loop
-            while (strRecordIn != null)
+            try
             {
-                // Declares a new object and populates an array with information from the file
-                Car carTemp = new Car();
-                strFields = strRecordIn.Split(DELIM);
+                // Opens the file and File Stream
+                    inFile = new FileStream(strFilename, FileMode.Open, FileAccess.Read);
+                reader = new StreamReader(inFile);
 
-                // Assigns the information stored in the temporary array into the temp object
-                carTemp.strCategory = strFields[0];
-                carTemp.strMake = strFields[1];
-                carTemp.strModel = strFields[2];
-                carTemp.dblRate = Convert.ToDouble(strFields[3]);
-
-                // Assigns the temporary object to the carData's list at index i
-                carTempData.carList[i] = carTemp;
-                i++; // Increments index
-
-                // Reads a new line
+                // Process
                 strRecordIn = reader.ReadLine();
+
+                // Loop
+                while (strRecordIn != null)
+                {
+                    // Declares a new object and populates an array with information from the file
+                    Car carTemp = new Car();
+                    strFields = strRecordIn.Split(DELIM);
+
+                    // Assigns the information stored in the temporary array into the temp object
+                    carTemp.strCategory = strFields[0];
+                    carTemp.strMake = strFields[1];
+                    carTemp.strModel = strFields[2];
+                    carTemp.dblRate = Convert.ToDouble(strFields[3]);
+
+                    // Assigns the temporary object to the carData's list at index i
+                    carTempData.carList[i] = carTemp;
+                    i++; // Increments index
+
+                    // Reads a new line
+                    strRecordIn = reader.ReadLine();
+                }
             }
-
-            // Closes the File
-            reader.Close();
-            inFile.Close();
-
+            finally
+            {
+                // Closes the File
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (inFile != null)
+                {
+                    inFile.Close();
+                }
+            }
             return carTempData;
         }
     }

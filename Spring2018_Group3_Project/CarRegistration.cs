@@ -10,12 +10,12 @@ namespace Spring2018_Group3_Project
     {
         // Variables
         public Car car { get; set; }
-        public int iDays { get; private set; }
-        public int iDay
+        private int _iDays;
+        public int iDays
         {
             get
             {
-                return iDays;
+                return _iDays;
             }
             set
             {
@@ -24,7 +24,7 @@ namespace Spring2018_Group3_Project
                     NegativeDateException nde = new NegativeDateException();
                     throw (nde);
                 }
-                iDays = value;
+                _iDays = value;
             }
         }
         public DateTime dtStart { get; set; }
@@ -35,27 +35,17 @@ namespace Spring2018_Group3_Project
         public CarRegistration()
         {
             car = null;
-            iDays = 0;
-            iDay = 1;
+            iDays = 1;
             dtStart = DateTime.Today;
             dtReturn = DateTime.Today;
             tCalcTime = dtReturn - dtStart;
-        }
-
-        // Constructor with parameters
-        public CarRegistration(Car carTemp, int days, DateTime dtBegin, DateTime dtEnd)
-        {
-            car = carTemp;
-            iDays = days;
-            dtStart = dtBegin;
-            dtReturn = dtEnd;
         }
 
         // Calculate total days
         public void dayConvert()
         {
             tCalcTime = dtReturn - dtStart;
-            iDay = (Convert.ToInt32(tCalcTime.TotalDays) + 1);
+            iDays = (Convert.ToInt32(tCalcTime.TotalDays) + 1);
         }
     }
 }

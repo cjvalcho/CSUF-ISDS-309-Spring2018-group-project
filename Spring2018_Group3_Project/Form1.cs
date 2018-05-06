@@ -25,9 +25,18 @@ namespace Spring2018_Group3_Project
         {
             InitializeComponent();
             
-            // Form Setup
+            // Ensure that file exists
+            try
+            {
+                carData = CarDatabase.FileReader(FILENAME);
+            }
+            catch(FileNotFoundException er)
+            {
+                MessageBox.Show(er.Message, "Error");
+            }
+
+            // Initialize Datagridview
             dgvAvailableCars.DataSource = dt;
-            carData = CarDatabase.FileReader(FILENAME);
             AddCols();
 
             // Setup Event Handlers
@@ -67,7 +76,7 @@ namespace Spring2018_Group3_Project
             // Local Variables
             int iCellCount = dgvAvailableCars.GetCellCount(DataGridViewElementStates.Selected);
 
-            // Error checking
+            // Ensure that only a single row is selected
             if (iCellCount > 0)
             {
                 if (dgvAvailableCars.AreAllCellsSelected(true))
@@ -78,12 +87,18 @@ namespace Spring2018_Group3_Project
                 {
                     // Find corresponding entry in database that matches selection and set it to a temporary Car
                     carRec.car = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString(), cbxTypes.SelectedItem.ToString());
-
-                    // Create temporary CarRegistration object
-                    CarRegistration carRecTemp = new CarRegistration(carRec.car, carRec.iDays, carRec.dtStart, carRec.dtReturn);
-
-                    // Pass temporary CarRegistration object to new form, and initiate new form.
-                    Form2 frm2 = new Form2(carRecTemp);
+                    try
+                    {
+                        // Double check if the date range is valid before passing to the next form
+                        carRec.dayConvert();
+                    }
+                    catch (NegativeDateException er)
+                    {
+                        MessageBox.Show(er.Message, "Error");
+                        return;
+                    }
+                    // Pass the CarRegistration object to new form, and initiate new form.
+                    Form2 frm2 = new Form2(carRec);
                     frm2.ShowDialog();
                 }
             }
@@ -114,11 +129,6 @@ namespace Spring2018_Group3_Project
                 }
             }
             dgvAvailableCars.Refresh();
-        }
-
-        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 
