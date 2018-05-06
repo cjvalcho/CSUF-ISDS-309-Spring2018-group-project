@@ -19,9 +19,7 @@ namespace Spring2018_Group3_Project
         const string FILENAME = "Database.txt";
         DataTable dt = new DataTable();
         CarDatabase carData;
-        int iDays = 0;
-        DateTime dtStartDate;
-        DateTime dtEndDate;
+        CarRegistration carRec = new CarRegistration();
 
         public Form1()
         {
@@ -31,29 +29,35 @@ namespace Spring2018_Group3_Project
             dgvAvailableCars.DataSource = dt;
             carData = CarDatabase.FileReader(FILENAME);
             AddCols();
+
+            // Setup Event Handlers
+            dtpStartDate.ValueChanged += new EventHandler(dtp_cbx_ValueChanged);
+            dtpEndDate.ValueChanged += new EventHandler(dtp_cbx_ValueChanged);
+            cbxTypes.SelectedValueChanged += new EventHandler(dtp_cbx_ValueChanged);
         }
 
-        // Upon selecting a type of vehicle, call Add Rows to populate the DataGridView
-        private void btnFindAvailable_Click(object sender, EventArgs e)
+        // Automatically fills the datagrid upon selecting a vehicle and/or setting a date range
+        private void dtp_cbx_ValueChanged(Object sender, EventArgs e)
         {
-            // Local Variables
-            dtStartDate = dtpStartDate.Value;
-            dtEndDate = dtpEndDate.Value;
-
-            // Calculation
-            TimeSpan t = dtEndDate - dtStartDate;
-
             // Assignment
-            iDays = Convert.ToInt32(t.TotalDays) + 1;
+            carRec.dtStart = dtpStartDate.Value;
+            carRec.dtReturn = dtpEndDate.Value;
 
             // Exception handling
-            if (cbxTypes.SelectedItem != null && iDays != 0)
+            try
             {
+                carRec.dayConvert();
                 AddRows(cbxTypes.SelectedItem.ToString());
             }
-            else
+            catch(NullReferenceException)
             {
-                MessageBox.Show("You must select a vehicle type and enter a valid date range.", "Error");
+                MessageBox.Show("You must select a type of vehicle.", "Error");
+                return;
+            }
+            catch (NegativeDateException er)
+            {
+                MessageBox.Show(er.Message, "Error");
+                return;
             }
         }
 
@@ -73,10 +77,10 @@ namespace Spring2018_Group3_Project
                 else
                 {
                     // Find corresponding entry in database that matches selection and set it to a temporary Car
-                    Car carTemp = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString(), cbxTypes.SelectedItem.ToString());
+                    carRec.car = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString(), cbxTypes.SelectedItem.ToString());
 
                     // Create temporary CarRegistration object
-                    CarRegistration carRecTemp = new CarRegistration(carTemp, iDays, dtStartDate, dtEndDate);
+                    CarRegistration carRecTemp = new CarRegistration(carRec.car, carRec.iDays, carRec.dtStart, carRec.dtReturn);
 
                     // Pass temporary CarRegistration object to new form, and initiate new form.
                     Form2 frm2 = new Form2(carRecTemp);
@@ -106,10 +110,18 @@ namespace Spring2018_Group3_Project
                 }
                 else if (carData.carList[i].strCategory == strSearch)
                 {
-                    dt.Rows.Add(carData.carList[i].strMake, carData.carList[i].strModel, carData.carList[i].dblRate.ToString("C"), (carData.carList[i].dblRate * Convert.ToDouble(iDays)).ToString("C"));
+                    dt.Rows.Add(carData.carList[i].strMake, carData.carList[i].strModel, carData.carList[i].dblRate.ToString("C"), (carData.carList[i].dblRate * Convert.ToDouble(carRec.iDays)).ToString("C"));
                 }
             }
             dgvAvailableCars.Refresh();
         }
+    }
+
+    //Exception
+    public class NegativeDateException : Exception
+    {
+        private static string msg = "You must enter a valid date range.";
+        public NegativeDateException() : base(msg)
+        { }
     }
 }
