@@ -85,8 +85,8 @@ namespace Spring2018_Group3_Project
                 }
                 else
                 {
-                    // Find corresponding entry in database that matches selection and set it to a temporary Car
-                    carRec.car = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString(), cbxTypes.SelectedItem.ToString());
+                    // Find corresponding entry in database that matches selection and assigns it to the Car Registration
+                    carRec.car = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString());
                     try
                     {
                         // Double check if the date range is valid before passing to the next form
@@ -117,13 +117,9 @@ namespace Spring2018_Group3_Project
         private void AddRows(string strSearch)
         {
             dt.Rows.Clear();
-            for (int i = 0; i < carData.carList.Length; i++)
+            for (int i = 0; i < carData.carList.Count; i++)
             {
-                if (carData.carList[i] == null)
-                {
-                    break;
-                }
-                else if (carData.carList[i].strCategory == strSearch)
+                if (carData.carList[i].strCategory == strSearch)
                 {
                     dt.Rows.Add(carData.carList[i].strMake, carData.carList[i].strModel, carData.carList[i].dblRate.ToString("C"), (carData.carList[i].dblRate * Convert.ToDouble(carRec.iDays)).ToString("C"));
                 }

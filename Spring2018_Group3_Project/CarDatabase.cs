@@ -12,17 +12,16 @@ namespace Spring2018_Group3_Project
     public class CarDatabase
     {
         // CarDatabase Variables
-        const int INVENTORY = 100; // Arbitrary size of array.
-        public Car[] carList;
+        public List<Car> carList;
 
         // Constructor
         public CarDatabase()
         {
-            carList = new Car[INVENTORY];
+            carList = new List<Car>();
         }
 
-        // 
-        public Car Find(string strSearch, string strCategory)
+        // Searches the list for a specific car and returns that car object
+        public Car Find(string strSearch)
         {
             int i = 0;
             while (this.carList[i].strModel != strSearch)
@@ -36,7 +35,6 @@ namespace Spring2018_Group3_Project
         public static CarDatabase FileReader(string strFilename)
         {
             // Method Variables
-            int i = 0; // Array Index
             const char DELIM = ';';
             string strRecordIn;
             string[] strFields;
@@ -66,9 +64,8 @@ namespace Spring2018_Group3_Project
                     carTemp.strModel = strFields[2];
                     carTemp.dblRate = Convert.ToDouble(strFields[3]);
 
-                    // Assigns the temporary object to the carData's list at index i
-                    carTempData.carList[i] = carTemp;
-                    i++; // Increments index
+                    // Adds the temporary object to the carData's list
+                    carTempData.carList.Add(carTemp);
 
                     // Reads a new line
                     strRecordIn = reader.ReadLine();
