@@ -115,6 +115,11 @@ namespace Spring2018_Group3_Project
             }
             dgvAvailableCars.Refresh();
         }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     //Exception
