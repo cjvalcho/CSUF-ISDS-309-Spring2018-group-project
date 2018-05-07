@@ -217,7 +217,7 @@ namespace Spring2018_Group3_Project
             writer.WriteLine("-------------");
             writer.WriteLine("Name" + DELIM + tbFirstName.Text + SPACE + tbLastName.Text + COMMA + "Email" + DELIM + tbEmail.Text + COMMA + "Phone Number" + DELIM + tbPhoneNumber.Text + COMMA + "DriverID" + DELIM + tbDriverID.Text);
             writer.WriteLine("Address" + DELIM + tbAddress.Text + COMMA + "City" + DELIM + tbCity.Text + COMMA + "State" + DELIM + tbState.Text + COMMA + "Zip Code" + DELIM + tbZipcode.Text);
-            writer.WriteLine("Vehicle" + DELIM + tbMake.Text + SPACE + tbModel.Text + COMMA + "Rate" + DELIM + tbTotalCost.Text);
+            writer.WriteLine("Vehicle" + DELIM + tbMake.Text + SPACE + tbModel.Text);
             writer.WriteLine("Rental Dates" + DELIM + tbPickup.Text + HYPHEN + tbReturn.Text + COMMA + "Total Cost" + tbRateTotal.Text);
             writer.WriteLine("-------------");
 
