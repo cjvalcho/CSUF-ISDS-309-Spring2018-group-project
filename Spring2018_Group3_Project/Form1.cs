@@ -19,7 +19,8 @@ namespace Spring2018_Group3_Project
         const string FILENAME = "Database.txt";
         DataTable dt = new DataTable();
         CarDatabase carData;
-        CarRegistration carRec = new CarRegistration();
+        Customer custRec = new Customer();
+        //CarRegistration carRec = new CarRegistration();
 
         public Form1()
         {
@@ -49,13 +50,13 @@ namespace Spring2018_Group3_Project
         private void dtp_cbx_ValueChanged(Object sender, EventArgs e)
         {
             // Assignment
-            carRec.dtStart = dtpStartDate.Value;
-            carRec.dtReturn = dtpEndDate.Value;
+            custRec.carRec.dtStart = dtpStartDate.Value;
+            custRec.carRec.dtReturn = dtpEndDate.Value;
 
             // Exception handling
             try
             {
-                carRec.dayConvert();
+                custRec.carRec.dayConvert();
                 AddRows(cbxTypes.SelectedItem.ToString());
             }
             catch(NullReferenceException)
@@ -86,11 +87,11 @@ namespace Spring2018_Group3_Project
                 else
                 {
                     // Find corresponding entry in database that matches selection and assigns it to the Car Registration
-                    carRec.car = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString());
+                    custRec.carRec.car = carData.Find(dgvAvailableCars.SelectedCells[1].Value.ToString());
                     try
                     {
                         // Double check if the date range is valid before passing to the next form
-                        carRec.dayConvert();
+                        custRec.carRec.dayConvert();
                     }
                     catch (NegativeDateException er)
                     {
@@ -98,7 +99,7 @@ namespace Spring2018_Group3_Project
                         return;
                     }
                     // Pass the CarRegistration object to new form, and initiate new form.
-                    Form2 frm2 = new Form2(carRec);
+                    Form2 frm2 = new Form2(custRec);
                     frm2.ShowDialog();
                 }
             }
@@ -121,7 +122,7 @@ namespace Spring2018_Group3_Project
             {
                 if (carData.carList[i].strCategory == strSearch)
                 {
-                    dt.Rows.Add(carData.carList[i].strMake, carData.carList[i].strModel, carData.carList[i].dblRate.ToString("C"), (carData.carList[i].dblRate * Convert.ToDouble(carRec.iDays)).ToString("C"));
+                    dt.Rows.Add(carData.carList[i].strMake, carData.carList[i].strModel, carData.carList[i].dblRate.ToString("C"), (carData.carList[i].dblRate * Convert.ToDouble(custRec.carRec.iDays)).ToString("C"));
                 }
             }
             dgvAvailableCars.Refresh();

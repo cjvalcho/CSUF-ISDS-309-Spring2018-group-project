@@ -21,8 +21,9 @@ namespace Spring2018_Group3_Project
             {
                 if (value <= 0)
                 {
-                    NegativeDateException nde = new NegativeDateException();
-                    throw (nde);
+                    //NegativeDateException nde = new NegativeDateException();
+                    //throw (nde);
+                    throw new NegativeDateException();
                 }
                 _iDays = value;
             }
