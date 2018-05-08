@@ -20,3 +20,14 @@ C:\Users\Averath\Documents\GitHub\CSUF-ISDS-309-Spring2018-group-project\Spring2
 C:\Users\Averath\Documents\GitHub\CSUF-ISDS-309-Spring2018-group-project\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.csproj.CoreCompileInputs.cache
 C:\Users\Averath\Documents\GitHub\CSUF-ISDS-309-Spring2018-group-project\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.exe
 C:\Users\Averath\Documents\GitHub\CSUF-ISDS-309-Spring2018-group-project\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.pdb
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\bin\Debug\Spring2018_Group3_Project.exe.config
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\bin\Debug\Spring2018_Group3_Project.exe
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\bin\Debug\Spring2018_Group3_Project.pdb
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.csprojResolveAssemblyReference.cache
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.Form1.resources
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.Form2.resources
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.Properties.Resources.resources
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.csproj.GenerateResource.cache
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.csproj.CoreCompileInputs.cache
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.exe
+C:\Users\Aaron Thornton\Desktop\CSUF-ISDS-309-Spring2018-group-project-master\Spring2018_Group3_Project\obj\Debug\Spring2018_Group3_Project.pdb
